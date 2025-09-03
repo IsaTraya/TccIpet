@@ -1,1 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iPet — Protótipo Mobile (replicado do Figma)</title>
+  <style>
+    :root{--bg:#dff0fb;--card:#ffffff;--muted:#8aaac8;--primary:#cfeefe;--accent:#57a0d6;--text:#123249}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text);display:flex;gap:20px;flex-wrap:wrap;padding:24px}
+    /* Frame */
+    .frame{width:375px;height:812px;background:linear-gradient(180deg,#ffffff,#f6fbff);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden;border:1px solid rgba(18,50,73,.04);position:relative}
+    .frame .screen{padding:18px}
+    .center{display:grid;place-items:center;height:100%}
+
+    /* Logo / Splash */
+    .splash{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:24px}
+    .paw{width:140px;height:140px;border-radius:30px;background:radial-gradient(circle at 30% 20%, #bfe9ff, #e6f7ff);display:grid;place-items:center}
+    .paw svg{width:90px;height:90px;opacity:.95}
+    .splash small{color:var(--muted)}
+
+    /* Form */
+    .form{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+    .input{background:#f6fbff;border:1px solid rgba(18,50,73,.06);padding:12px;border-radius:10px;font-size:15px}
+    .btn{background:linear-gradient(180deg,#57a0d6,#2e85b5);color:white;padding:12px;border-radius:12px;text-align:center;font-weight:700}
+    .link{color:var(--accent);font-weight:600;font-size:14px;text-align:center}
+
+    /* Top bar */
+    .topbar{display:flex;align-items:center;gap:12px}
+    .topbar .back{width:36px;height:36px;border-radius:9px;background:transparent;display:grid;place-items:center}
+    .title{font-weight:700;font-size:16px}
+    .subtitle{font-size:12px;color:var(--muted)}
+
+    /* List / Cards */
+    .list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .item{display:flex;gap:12px;align-items:center;padding:12px;background:var(--card);border-radius:12px;border:1px solid rgba(18,50,73,.04)}
+    .avatar{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#e6f7ff,#d1f0ff);display:grid;place-items:center;font-weight:700}
+    .meta{flex:1}
+    .meta strong{display:block}
+    .meta small{color:var(--muted);font-size:13px}
+    .status{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(87,160,214,.12);color:var(--accent);border:1px solid rgba(87,160,214,.18)}
+
+    /* Chat */
+    .chat{display:flex;flex-direction:column;gap:10px;padding:12px}
+    .bubble{max-width:75%;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid rgba(18,50,73,.04)}
+    .bubble.me{background:linear-gradient(180deg,#e6f7ff,#d8f0ff);align-self:flex-end}
+    .time{font-size:11px;color:var(--muted);margin-top:6px}
+
+    /* Tabs bottom */
+    .tabs{position:absolute;left:0;right:0;bottom:0;padding:10px 18px;background:transparent;display:flex;justify-content:space-between;align-items:center}
+    .tab{display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--muted)}
+
+    /* Small helpers */
+    .muted{color:var(--muted);font-size:13px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(87,160,214,.12);color:var(--accent);font-weight:700}
+    .search{display:flex;gap:8px;align-items:center}
+    .search .input{flex:1}
+
+    /* Footer note for demo */
+    .demo-note{position:absolute;left:12px;bottom:76px;font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- Splash / Logo -->
+  <div class="frame">
+    <div class="center splash">
+      <div class="paw" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#2e85b5"><path d="M12 3c1.7 0 3 1.8 3 4s-1.3 4-3 4-3-1.8-3-4 1.3-4 3-4zm6 6.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM4 9c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM8 15c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm8 0c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>
+      </div>
+      <div>
+        <h2 style="margin:0">iPet</h2>
+        <small class="muted">Cuidando do seu pet com carinho</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Screen -->
+  <div class="frame">
+    <div class="screen">
+      <div class="topbar"><div class="back">←</div><div class="title">Login</div></div>
+      <p class="subtitle">Entre com seu e‑mail e senha</p>
+      <form class="form" onsubmit="event.preventDefault()">
+        <input class="input" placeholder="E-mail" />
+        <input class="input" placeholder="Senha" type="password" />
+        <div style="display:flex;justify-content:space-between;align-items:center"><a class="link">Esqueci a senha</a><div style="width:92px"></div></div>
+        <button class="btn" type="submit">Entrar</button>
+        <div style="text-align:center;margin-top:8px"><a class="link">Entrar com Google</a></div>
+      </form>
+      <div class="tabs">
+        <div class="tab">🏠<div>Início</div></div>
+        <div class="tab">💬<div>Chat</div></div>
+        <div class="tab">👤<div>Perfil</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- List / Home -->
+  <div class="frame">
+    <div class="screen">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div class="title">Serviços</div>
+          <div class="muted">Encontre um profissional próximo</div>
+        </div>
+        <div class="badge">+12k</div>
+      </div>
+
+      <div class="search" style="margin-top:12px">
+        <input class="input" placeholder="Buscar serviço ou profissional" />
+      </div>
+
+      <div class="list">
+        <div class="item"><div class="avatar">AN</div><div class="meta"><strong>Banho & Tosa</strong><small>Hoje • Ana • 15:30</small></div><div class="status">Confirmado</div></div>
+        <div class="item"><div class="avatar">JO</div><div class="meta"><strong>Passeio</strong><small>Amanhã • João • 08:00</small></div><div class="status" style="background:rgba(255,176,32,.12);color:#b87300;border-color:rgba(255,176,32,.18)">Agendado</div></div>
+        <div class="item"><div class="avatar">DR</div><div class="meta"><strong>Vet em casa</strong><small>Sex • Dra. Carol • 19:00</small></div><div class="status">Em breve</div></div>
+      </div>
+
+      <div class="demo-note">Protótipo: lista de serviços</div>
+
+      <div class="tabs">
+        <div class="tab">🏠<div>Início</div></div>
+        <div class="tab">📋<div>Pedidos</div></div>
+        <div class="tab">💬<div>Chat</div></div>
+        <div class="tab">👤<div>Perfil</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat screen -->
+  <div class="frame">
+    <div class="screen">
+      <div class="topbar"><div class="back">←</div><div style="text-align:center;width:100%"><div class="title">Chat com João</div><div class="muted">Online</div></div></div>
+      <div class="chat" style="margin-top:12px">
+        <div class="bubble">Oi! Seu pet está pronto, vou enviar fotos em seguida.</div>
+        <div class="time muted">09:14</div>
+        <div class="bubble me">Perfeito, obrigada! 😊</div>
+        <div class="time muted" style="text-align:right">09:16</div>
+        <div class="bubble">Aqui estão as fotos do banho e tosa.</div>
+        <div class="time muted">09:22</div>
+      </div>
+
+      <div style="position:absolute;left:18px;right:18px;bottom:72px;display:flex;gap:8px">
+        <input class="input" placeholder="Escreva uma mensagem" />
+        <button class="btn" style="padding:10px 12px">Enviar</button>
+      </div>
+
+      <div class="tabs">
+        <div class="tab">🏠<div>Início</div></div>
+        <div class="tab">📋<div>Pedidos</div></div>
+        <div class="tab">💬<div>Chat</div></div>
+        <div class="tab">👤<div>Perfil</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perfil / Configurações -->
+  <div class="frame">
+    <div class="screen">
+      <div class="topbar"><div class="back">←</div><div class="title">Perfil</div></div>
+      <div style="display:flex;gap:12px;align-items:center;margin-top:14px">
+        <div class="avatar" style="width:72px;height:72px;border-radius:16px">U</div>
+        <div>
+          <strong>Isabella</strong>
+          <div class="muted">Curitiba, PR</div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+        <div class="item"><div class="meta"><strong>Meus Pets</strong><small>2 registrados</small></div></div>
+        <div class="item"><div class="meta"><strong>Formas de pagamento</strong><small>PIX • Cartão</small></div></div>
+        <div class="item"><div class="meta"><strong>Notificações</strong><small>Ativas</small></div></div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab">🏠<div>Início</div></div>
+        <div class="tab">📋<div>Pedidos</div></div>
+        <div class="tab">💬<div>Chat</div></div>
+        <div class="tab">👤<div>Perfil</div></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
 
