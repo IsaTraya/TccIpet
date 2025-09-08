@@ -1,99 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPet</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #c9e0f5; /* azul do fundo do Figma */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #E3F1FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    .card {
+      width: 320px;
+      height: 600px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background-color: #E3F1FF;
-        }
+    /* detalhe curvado superior */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 200px;
+      height: 200px;
+      background-color: #c9e0f5;
+      border-radius: 50%;
+    }
 
-        .form-box {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    /* detalhe curvado inferior */
+    .card::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 200px;
+      height: 200px;
+      background-color: #c9e0f5;
+      border-radius: 50%;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        form input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #1A73E8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0c60b1;
-        }
-
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #1A73E8;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .logo {
+      z-index: 1;
+      max-width: 180px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-box">
-            <div class="login-form">
-                <h2>Cadastro</h2>
-                <form action="login_google.html" method="get">
-                    <input type="email" placeholder="E-mail" required><br>
-                    <input type="text" placeholder="Nome" required><br>
-                    <input type="text" placeholder="Sobrenome" required><br>
-                    <input type="password" placeholder="Senha" required><br>
-                    <input type="tel" placeholder="Celular" required><br>
-                    <button type="submit">Próximo</button>
-                </form>
-                <!-- Link para a página de Login com Google -->
-                <a href="login_google.html">Cadastrar-se com o Google</a>
-            </div>
-        </div>
-    </div>
+  <div class="card">
+    <img src="logo.png" alt="Logo iPet" class="logo">
+  </div>
 </body>
 </html>
+
 
 
