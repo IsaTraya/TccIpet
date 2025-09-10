@@ -1,96 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Google</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #E3F1FF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background-color: #E3F1FF;
-        }
-
-        .form-box {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        form input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #1A73E8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0c60b1;
-        }
-
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #1A73E8;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #E3F1FF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 100%; max-width: 400px;
+      padding: 20px; background-color: #E3F1FF;
+    }
+    .form-box {
+      background-color: #fff; border-radius: 8px;
+      padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h2 { text-align: center; margin-bottom: 20px; }
+    form input {
+      width: 100%; padding: 12px; margin: 8px 0;
+      border: 1px solid #ccc; border-radius: 4px;
+    }
+    button {
+      width: 100%; padding: 12px;
+      background-color: #1A73E8; color: white;
+      border: none; border-radius: 4px;
+      font-size: 16px; cursor: pointer;
+    }
+    button:hover { background-color: #0c60b1; }
+    a {
+      display: block; text-align: center;
+      margin-top: 10px; text-decoration: none;
+      color: #1A73E8;
+    }
+    a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-box">
-            <div class="google-login-form">
-                <h2>Login Google</h2>
-                <form action="senha_esqueci.html" method="get">
-                    <label for="email">Email ou telefone</label>
-                    <input type="email" id="email" name="email" placeholder="Email ou telefone" required>
-                    <button type="submit">Próximo</button>
-                </form>
-                <!-- Link para a página de Recuperação de Senha -->
-                <a href="senha_esqueci.html">Esqueci minha senha</a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="form-box">
+      <div class="google-login-form">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input type="email" id="email" placeholder="Email" required>
+          <input type="password" id="senha" placeholder="Senha" required>
+          <button type="submit">Entrar</button>
+        </form>
+        <a href="senha_esqueci.html">Esqueci minha senha</a>
+      </div>
     </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+      if (usuario && usuario.email === email && usuario.senha === senha) {
+        alert("Login realizado com sucesso!");
+        // Aqui você poderia redirecionar para a área do usuário
+        window.location.href = "home.html";
+      } else {
+        alert("Email ou senha incorretos!");
+      }
+    });
+  </script>
 </body>
 </html>
+
 
 
