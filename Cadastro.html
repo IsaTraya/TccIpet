@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Cadastro</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -15,12 +15,16 @@
       height: 100vh;
     }
     .container {
-      width: 100%; max-width: 400px;
-      padding: 20px; background-color: #E3F1FF;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #E3F1FF;
     }
     .form-box {
-      background-color: #fff; border-radius: 8px;
-      padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     h2 { text-align: center; margin-bottom: 20px; }
     form input {
@@ -45,38 +49,29 @@
 <body>
   <div class="container">
     <div class="form-box">
-      <div class="google-login-form">
-        <h2>Login</h2>
-        <form id="loginForm">
-          <input type="email" id="email" placeholder="Email" required>
-          <input type="password" id="senha" placeholder="Senha" required>
-          <button type="submit">Entrar</button>
+      <div class="login-form">
+        <h2>Cadastro</h2>
+        <form id="cadastroForm">
+          <input type="email" placeholder="E-mail" required><br>
+          <input type="text" placeholder="Nome" required><br>
+          <input type="text" placeholder="Sobrenome" required><br>
+          <input type="password" placeholder="Senha" required><br>
+          <input type="tel" placeholder="Celular" required><br>
+          <button type="submit">Próximo</button>
         </form>
-        <a href="senha_esqueci.html">Esqueci minha senha</a>
+        <!-- Link para Login com Google -->
+        <a href="LoginGoogle.html">Cadastrar-se com o Google</a>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
+    document.getElementById("cadastroForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      const senha = document.getElementById("senha").value;
-
-      const usuario = JSON.parse(localStorage.getItem("usuario"));
-
-      if (usuario && usuario.email === email && usuario.senha === senha) {
-        alert("Login realizado com sucesso!");
-        // Aqui você poderia redirecionar para a área do usuário
-        window.location.href = "home.html";
-      } else {
-        alert("Email ou senha incorretos!");
-      }
+      window.location.href = "Paginicio.html";
     });
   </script>
 </body>
 </html>
-
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro</title>
+  <title>Redefinir Senha</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -15,16 +15,12 @@
       height: 100vh;
     }
     .container {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-      background-color: #E3F1FF;
+      width: 100%; max-width: 400px;
+      padding: 20px; background-color: #E3F1FF;
     }
     .form-box {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff; border-radius: 8px;
+      padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     h2 { text-align: center; margin-bottom: 20px; }
     form input {
@@ -38,25 +34,25 @@
       font-size: 16px; cursor: pointer;
     }
     button:hover { background-color: #0c60b1; }
-    a {
-      display: block; text-align: center;
-      margin-top: 10px; text-decoration: none;
-      color: #1A73E8;
-    }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="form-box">
-      <div class="login-form">
-        <h2>Cadastro</h2>
-        <form id="cadastroForm">
-          <input type="email" id="email" placeholder="E-mail" required><br>
-          <input type="text" id="nome" placeholder="Nome" required><br>
-          <input type="text" id="sobrenome" placeholder="Sobrenome" required><br>
-          <input type="password" id="senha" placeholder="Senha" required><br>
-          <input type="tel" id="celular" placeh
+      <h2>Redefinir Senha</h2>
+      <form id="resetForm">
+        <input type="password" placeholder="Nova senha" required><br>
+        <input type="password" placeholder="Repetir senha nova" required><br>
+        <button type="submit">Continuar</button>
+      </form>
+    </div>
+  </div>
 
-
-
+  <script>
+    document.getElementById("resetForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      window.open("Paginicio.html", "_blank"); // abre em nova aba
+    });
+  </script>
+</body>
+</html>
