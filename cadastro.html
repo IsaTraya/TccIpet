@@ -14,23 +14,23 @@
     <form action="home.html" method="GET">
       <div class="form-group">
         <label>Nome completo</label>
-        <input type="text" name="nome" placeholder="Digite seu nome" required style="color:#000; background:#fff;">
+        <input type="text" name="nome" placeholder="Digite seu nome" required>
       </div>
 
       <div class="form-group">
         <label>Gmail</label>
-        <input type="email" name="email" placeholder="seu.email@gmail.com" required style="color:#000; background:#fff;">
+        <input type="email" name="email" placeholder="seu.email@gmail.com" required>
       </div>
 
       <div class="form-group">
         <label>Senha</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required style="color:#000; background:#fff;">
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
         <div id="password-strength" class="password-strength"></div>
       </div>
       
       <div class="form-group">
         <label>Número de celular</label>
-        <input type="text" id="celular" name="celular" placeholder="(11) 99999-9999" required style="color:#000; background:#fff;">
+        <input type="text" id="celular" name="celular" placeholder="(11) 99999-9999" required>
       </div>
 
       <button type="submit" class="btn btn-primary">Próximo</button>
@@ -40,6 +40,28 @@
     <a href="login-google.html" class="btn btn-google">Cadastrar-se com o Google</a>
   </div>
 
-  <script src="script.js"></script>
+  <!-- comente temporariamente o script original para testar -->
+  <!-- <script src="script.js"></script> -->
+
+  <!-- script de depuração: abre o console do navegador e foque um input -->
+  <script>
+    document.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('focus', () => {
+        const cs = getComputedStyle(inp);
+        console.log(
+          'INPUT:', inp.name || inp.id || inp.placeholder,
+          '| color:', cs.color,
+          '| -webkit-text-fill-color:', cs.getPropertyValue('-webkit-text-fill-color'),
+          '| background:', cs.backgroundColor
+        );
+      });
+      inp.addEventListener('input', () => {
+        // mostra que há texto realmente no value
+        console.log(inp.name || inp.id || inp.placeholder, 'value length =', inp.value.length);
+      });
+    });
+    console.log('Depuração pronta — abra o Console (F12) e foque nos inputs para ver as cores computadas.');
+  </script>
 </body>
 </html>
+

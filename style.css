@@ -50,6 +50,7 @@ p {
   color: #444;
 }
 
+/* estilo principal dos inputs */
 .form-group input {
   width: 100%;
   padding: 12px;
@@ -60,16 +61,44 @@ p {
   transition: border .3s;
   color: #000;              /* cor do texto digitado */
   background-color: #fff;   /* fundo branco */
+  -webkit-text-fill-color: #000; /* para webkit-based browsers */
+  caret-color: #000;
+  opacity: 1;
 }
 
-.form-group input::placeholder {
-  color: #888; /* cor do placeholder */
-}
+/* placeholder para vários browsers */
+.form-group input::placeholder { color: #888; }
+.form-group input::-webkit-input-placeholder { color: #888; }
+.form-group input::-moz-placeholder { color: #888; }
+.form-group input:-ms-input-placeholder { color: #888; }
 
+/* foco */
 .form-group input:focus {
   border-color: #4a4aef;
+  color: #000;
+  -webkit-text-fill-color: #000;
 }
 
+/* regras que tratam autofill (Chrome / Safari) */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+  box-shadow: 0 0 0px 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+  caret-color: #000 !important;
+}
+
+/* caso algum estilo deixe o input transparente ou com opacity baixa */
+input[style*="color: transparent"],
+input[style*="color:transparent"],
+input[style*="opacity: 0"],
+input[style*="opacity:0"] {
+  color: #000 !important;
+  opacity: 1 !important;
+}
+
+/* botões e outras regras (mantive seu design) */
 .password-strength {
   font-size: 12px;
   margin-top: 5px;
@@ -131,16 +160,4 @@ a {
   color: #4a4aef;
   text-decoration: none;
   text-align: right;
-}
-
-/* 🔥 Correção final para forçar cor dos inputs */
-input,
-input:focus,
-input:active {
-  color: #000 !important;          /* texto digitado sempre preto */
-  background-color: #fff !important; /* fundo branco */
-}
-
-input::placeholder {
-  color: #888 !important; /* placeholder em cinza */
 }
