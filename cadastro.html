@@ -1,67 +1,180 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Cadastro — teste</title>
+
+  <style>
+    :root { color-scheme: light; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body {
+      background: #f8f9fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    h2 { color:#222; margin-bottom:8px; font-size:22px; }
+    p { font-size:14px; color:#666; margin-bottom:20px; text-align:center; }
+
+    .form-group { margin-bottom:15px; text-align:left; }
+    .form-group label { display:block; margin-bottom:5px; font-size:14px; color:#444; }
+
+    /* --- estilo principal dos inputs --- */
+    .form-group input {
+      width:100%;
+      padding:12px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      font-size:14px;
+      outline:none;
+      transition: border .2s;
+      color:#000 !important;                     /* força cor do texto */
+      -webkit-text-fill-color:#000 !important;   /* chrome/safari autofill + theme */
+      background-color:#fff !important;          /* força fundo branco */
+      caret-color:#000 !important;               /* cursor preto */
+      -webkit-appearance:none !important;
+      appearance:none !important;
+      mix-blend-mode: normal !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
+
+    .form-group input::placeholder { color:#888; }
+    .form-group input:-ms-input-placeholder { color:#888; }
+    .form-group input::-ms-input-placeholder { color:#888; }
+    .form-group input::-webkit-input-placeholder { color:#888; }
+    .form-group input::-moz-placeholder { color:#888; opacity:1; }
+
+    .form-group input:focus { border-color:#4a4aef; color:#000 !important; -webkit-text-fill-color:#000 !important; }
+
+    /* --- tratamento específico de autofill (Chrome / Safari) --- */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:focus,
+    textarea:-webkit-autofill:hover {
+      -webkit-text-fill-color: #000 !important;
+      caret-color: #000 !important;
+      -webkit-box-shadow: 0 0 0px 1000px #fff inset !important; /* torna o fundo branco */
+      box-shadow: 0 0 0px 1000px #fff inset !important;
+    }
+
+    /* evita que extensões/estilos tortos escondam o input */
+    input[style*="color: transparent"], input[style*="color:transparent"],
+    input[style*="opacity: 0"], input[style*="opacity:0"] {
+      color:#000 !important;
+      opacity:1 !important;
+    }
+
+    /* botões e visuais */
+    .password-strength { font-size:12px; margin-top:5px; }
+    .btn { width:100%; padding:12px; border:none; border-radius:8px; cursor:pointer; font-size:16px; margin-top:10px; }
+    .btn-primary { background:#0b0b19; color:#fff; }
+    .divider { display:flex; align-items:center; margin:20px 0; }
+    .divider::before, .divider::after { content:""; flex:1; height:1px; background:#ddd; }
+    .divider span { margin:0 10px; color:#999; font-size:14px; }
+    .btn-google { background:#fff; border:1px solid #ddd; color:#333; font-weight:500; text-decoration:none; display:inline-block; text-align:center; padding:11px; border-radius:8px; width:100%; }
+    .btn-google:hover { background:#f8f8f8; }
+    a { display:block; margin-top:10px; font-size:13px; color:#4a4aef; text-decoration:none; text-align:right; }
+  </style>
 </head>
 <body>
-    
+
   <div class="container">
     <h2>Criar Conta</h2>
     <p>Preencha seus dados para começar</p>
 
-    <form action="home.html" method="GET">
+    <form action="home.html" method="GET" autocomplete="on">
       <div class="form-group">
-        <label>Nome completo</label>
-        <input type="text" name="nome" placeholder="Digite seu nome" required>
+        <label for="nome">Nome completo</label>
+        <input id="nome" type="text" name="nome" placeholder="Digite seu nome" required autocomplete="name">
       </div>
 
       <div class="form-group">
-        <label>Gmail</label>
-        <input type="email" name="email" placeholder="seu.email@gmail.com" required>
+        <label for="email">Gmail</label>
+        <input id="email" type="email" name="email" placeholder="seu.email@gmail.com" required autocomplete="email">
       </div>
 
       <div class="form-group">
-        <label>Senha</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" name="senha" placeholder="Digite sua senha" required autocomplete="new-password">
         <div id="password-strength" class="password-strength"></div>
       </div>
-      
+
       <div class="form-group">
-        <label>Número de celular</label>
-        <input type="text" id="celular" name="celular" placeholder="(11) 99999-9999" required>
+        <label for="celular">Número de celular</label>
+        <input id="celular" type="text" name="celular" placeholder="(11) 99999-9999" required autocomplete="tel">
       </div>
 
       <button type="submit" class="btn btn-primary">Próximo</button>
     </form>
 
     <div class="divider"><span>ou</span></div>
-    <a href="login-google.html" class="btn btn-google">Cadastrar-se com o Google</a>
+    <a href="login-google.html" class="btn-google">Cadastrar-se com o Google</a>
   </div>
 
-  <!-- comente temporariamente o script original para testar -->
-  <!-- <script src="script.js"></script> -->
-
-  <!-- script de depuração: abre o console do navegador e foque um input -->
+  <!-- script original (máscara + força de senha) + depuração leve -->
   <script>
-    document.querySelectorAll('input').forEach(inp => {
-      inp.addEventListener('focus', () => {
-        const cs = getComputedStyle(inp);
-        console.log(
-          'INPUT:', inp.name || inp.id || inp.placeholder,
-          '| color:', cs.color,
-          '| -webkit-text-fill-color:', cs.getPropertyValue('-webkit-text-fill-color'),
-          '| background:', cs.backgroundColor
-        );
-      });
-      inp.addEventListener('input', () => {
-        // mostra que há texto realmente no value
-        console.log(inp.name || inp.id || inp.placeholder, 'value length =', inp.value.length);
+    // máscara de celular e força de senha (seu código)
+    document.addEventListener("DOMContentLoaded", () => {
+      const celular = document.getElementById("celular");
+      if (celular) {
+        celular.addEventListener("input", function(e) {
+          let v = e.target.value.replace(/\D/g, "");
+          if (v.length > 11) v = v.slice(0, 11);
+          if (v.length > 6) e.target.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+          else if (v.length > 2) e.target.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+          else if (v.length > 0) e.target.value = `(${v}`;
+        });
+      }
+
+      const senha = document.getElementById("senha");
+      if (senha) {
+        senha.addEventListener("input", function() {
+          const strength = document.getElementById("password-strength");
+          let msg = "";
+          let color = "red";
+
+          if (this.value.length < 6) {msg="Fraca"; color="red";}
+          else if (/[A-Z]/.test(this.value) && /\d/.test(this.value) && this.value.length >= 8) {msg="Forte"; color="green";}
+          else {msg="Regular"; color="orange";}
+
+          strength.textContent = "Força: " + msg;
+          strength.style.color = color;
+        });
+      }
+
+      // debug helper: quando focar, mostra as cores computadas no console
+      document.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('focus', () => {
+          const cs = getComputedStyle(inp);
+          console.log('DEBUG INPUT:', inp.id || inp.name || inp.placeholder,
+            '| color =', cs.color,
+            '| -webkit-text-fill-color =', cs.getPropertyValue('-webkit-text-fill-color'),
+            '| background =', cs.backgroundColor
+          );
+        });
       });
     });
-    console.log('Depuração pronta — abra o Console (F12) e foque nos inputs para ver as cores computadas.');
   </script>
 </body>
 </html>
+
 
