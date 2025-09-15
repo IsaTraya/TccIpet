@@ -58,7 +58,7 @@ p {
   font-size: 14px;
   outline: none;
   transition: border .3s;
-  color: #000;              /* texto digitado aparece em preto */
+  color: #000;              /* cor do texto digitado */
   background-color: #fff;   /* fundo branco */
 }
 
@@ -131,4 +131,16 @@ a {
   color: #4a4aef;
   text-decoration: none;
   text-align: right;
+}
+
+/* 🔥 Correção final para forçar cor dos inputs */
+input,
+input:focus,
+input:active {
+  color: #000 !important;          /* texto digitado sempre preto */
+  background-color: #fff !important; /* fundo branco */
+}
+
+input::placeholder {
+  color: #888 !important; /* placeholder em cinza */
 }
