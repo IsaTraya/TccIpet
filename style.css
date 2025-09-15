@@ -58,6 +58,12 @@ p {
   font-size: 14px;
   outline: none;
   transition: border .3s;
+  color: #000;              /* texto digitado aparece em preto */
+  background-color: #fff;   /* fundo branco */
+}
+
+.form-group input::placeholder {
+  color: #888; /* cor do placeholder */
 }
 
 .form-group input:focus {
@@ -126,6 +132,3 @@ a {
   text-decoration: none;
   text-align: right;
 }
-
-
-
