@@ -33,25 +33,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-// Verifica se o usuário já entrou no app
 window.addEventListener("load", () => {
+  const welcome = document.getElementById("welcome");
+  const main = document.getElementById("main");
   const hasVisited = localStorage.getItem("visited");
 
   if (hasVisited) {
-    // Se já visitou, vai direto para a página principal
-    document.getElementById("welcome").style.display = "none";
-    document.getElementById("main").style.display = "flex";
+    // Se já entrou antes → vai direto pra home
+    welcome.style.display = "none";
+    main.style.display = "flex";
   } else {
-    // Se for a primeira vez, mostra a tela de boas-vindas
+    // Primeira vez → mostra boas-vindas
+    welcome.style.display = "flex";
+    main.style.display = "none";
+
     setTimeout(() => {
-      document.getElementById("welcome").style.display = "none";
-      document.getElementById("main").style.display = "flex";
-      localStorage.setItem("visited", "true"); // Marca como visitado
+      welcome.style.display = "none";
+      main.style.display = "flex";
+      localStorage.setItem("visited", "true"); // Marca que já entrou
     }, 3000);
   }
 });
 
-// Função de pesquisa
+// 🔎 Função de pesquisa
 const searchInput = document.getElementById("search");
 const items = document.querySelectorAll(".menu li");
 
@@ -61,16 +65,12 @@ if (searchInput) {
 
     items.forEach(item => {
       let text = item.textContent.toLowerCase();
-      if (text.includes(filter)) {
-        item.style.display = "flex";
-      } else {
-        item.style.display = "none";
-      }
+      item.style.display = text.includes(filter) ? "flex" : "none";
     });
   });
 }
 
-// Eventos dos botões inferiores
+// ⚙️ Botões inferiores
 document.getElementById("btn-back")?.addEventListener("click", () => {
   alert("Voltando para a página anterior...");
 });
