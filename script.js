@@ -33,12 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-// Delay de 3 segundos para trocar telas
+// Verifica se o usuário já entrou no app
 window.addEventListener("load", () => {
-  setTimeout(() => {
+  const hasVisited = localStorage.getItem("visited");
+
+  if (hasVisited) {
+    // Se já visitou, vai direto para a página principal
     document.getElementById("welcome").style.display = "none";
     document.getElementById("main").style.display = "flex";
-  }, 3000);
+  } else {
+    // Se for a primeira vez, mostra a tela de boas-vindas
+    setTimeout(() => {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("main").style.display = "flex";
+      localStorage.setItem("visited", "true"); // Marca como visitado
+    }, 3000);
+  }
 });
 
 // Função de pesquisa
