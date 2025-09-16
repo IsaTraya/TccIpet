@@ -33,3 +33,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Delay de 3 segundos para trocar telas
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("main").style.display = "flex";
+  }, 3000);
+});
+
+// Função de pesquisa
+const searchInput = document.getElementById("search");
+const items = document.querySelectorAll(".menu li");
+
+if (searchInput) {
+  searchInput.addEventListener("keyup", () => {
+    let filter = searchInput.value.toLowerCase();
+
+    items.forEach(item => {
+      let text = item.textContent.toLowerCase();
+      if (text.includes(filter)) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+}
+
+// Eventos dos botões inferiores
+document.getElementById("btn-back")?.addEventListener("click", () => {
+  alert("Voltando para a página anterior...");
+});
+
+document.getElementById("btn-menu")?.addEventListener("click", () => {
+  alert("Abrindo menu...");
+});
+
+document.getElementById("btn-profile")?.addEventListener("click", () => {
+  alert("Abrindo perfil do usuário...");
+});
