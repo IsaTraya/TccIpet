@@ -161,3 +161,61 @@ a {
   text-decoration: none;
   text-align: right;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #cfe9ff;
+}
+
+.tela {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Tela de Boas-Vindas */
+.container {
+  text-align: center;
+}
+
+/* Tela Inicial */
+.app-container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+}
+
+.search {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+}
+
+.lista li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}

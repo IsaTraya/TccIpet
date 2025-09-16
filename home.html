@@ -1,1 +1,42 @@
-<!DOCTYPE html> <html lang="pt-br"> <head> <meta charset="UTF-8"> <title>Home</title> <link rel="stylesheet" href="style.css"> </head> <body> <div class="container"> <h1>Bem-vindo ao Aplicativo 🎉</h1> <p>Cadastro/Login concluído com sucesso.</p> </div> </body> </html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Tela de Boas-Vindas -->
+  <div id="welcome" class="tela">
+    <div class="container">
+      <h1>Bem-vindo ao Aplicativo 🎉</h1>
+      <p>Cadastro/Login concluído com sucesso.</p>
+    </div>
+  </div>
+
+  <!-- Tela Inicial -->
+  <div id="home" class="tela hidden">
+    <div class="app-container">
+      <input type="text" placeholder="Pesquise aqui..." class="search">
+
+      <p class="subtitle">Encontre o que você precisa aqui.</p>
+
+      <ul class="lista">
+        <li>🐾 Veterinário</li>
+        <li>🐾 Aviário</li>
+        <li>🐾 Banho e Tosa</li>
+        <li>🐾 Táxi Pet</li>
+        <li>🐾 Pet Friendly</li>
+      </ul>
+
+      <!-- Barra de navegação inferior -->
+      <div class="navbar">
+        <button>⬅️</button>
+        <button>☰</button>
+        <button>👤</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

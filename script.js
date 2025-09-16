@@ -33,52 +33,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const welcome = document.getElementById("welcome");
-  const main = document.getElementById("main");
-  const hasVisited = localStorage.getItem("visited");
+  const home = document.getElementById("home");
 
-  if (hasVisited) {
-    // Se já entrou antes → vai direto pra home
-    welcome.style.display = "none";
-    main.style.display = "flex";
+  // Verifica se o usuário já acessou antes
+  const jaEntrou = localStorage.getItem("jaEntrou");
+
+  if (jaEntrou) {
+    // Pula direto para a Home
+    welcome.classList.add("hidden");
+    home.classList.remove("hidden");
   } else {
-    // Primeira vez → mostra boas-vindas
-    welcome.style.display = "flex";
-    main.style.display = "none";
-
+    // Mostra Boas-Vindas por 3 segundos e depois vai para a Home
     setTimeout(() => {
-      welcome.style.display = "none";
-      main.style.display = "flex";
-      localStorage.setItem("visited", "true"); // Marca que já entrou
+      welcome.classList.add("hidden");
+      home.classList.remove("hidden");
+
+      // Marca que o usuário já entrou
+      localStorage.setItem("jaEntrou", "true");
     }, 3000);
   }
 });
 
-// 🔎 Função de pesquisa
-const searchInput = document.getElementById("search");
-const items = document.querySelectorAll(".menu li");
-
-if (searchInput) {
-  searchInput.addEventListener("keyup", () => {
-    let filter = searchInput.value.toLowerCase();
-
-    items.forEach(item => {
-      let text = item.textContent.toLowerCase();
-      item.style.display = text.includes(filter) ? "flex" : "none";
-    });
-  });
-}
-
-// ⚙️ Botões inferiores
-document.getElementById("btn-back")?.addEventListener("click", () => {
-  alert("Voltando para a página anterior...");
-});
-
-document.getElementById("btn-menu")?.addEventListener("click", () => {
-  alert("Abrindo menu...");
-});
-
-document.getElementById("btn-profile")?.addEventListener("click", () => {
-  alert("Abrindo perfil do usuário...");
-});
