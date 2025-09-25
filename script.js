@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     welcome.classList.add("hidden");
     home.classList.remove("hidden");
   } else {
-    // Mostra Boas-Vindas por 3 segundos e depois vai para a Home
+    // Mostra Boas-Vindas por 3 segundos e depois vai para a Home.html 
     setTimeout(() => {
       welcome.classList.add("hidden");
       home.classList.remove("hidden");
