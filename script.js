@@ -55,17 +55,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
 });
-     // Exemplo simples para manipulação das telas
-document.addEventListener('DOMContentLoaded', function () {
-  const welcomeScreen = document.getElementById('welcome');
-  const homeScreen = document.getElementById('home');
 
-  // Aqui você pode configurar a lógica para alternar entre as telas
-  if (welcomeScreen) {
-    setTimeout(() => {
-      welcomeScreen.classList.add('hidden');
-      homeScreen.classList.remove('hidden');
-    }, 2000); // Exemplo: muda para a tela inicial após 2 segundos
-  }
-});
 
