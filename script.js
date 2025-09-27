@@ -55,4 +55,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
 });  
-     //Após os 3 segundos permanecer na tela inicial
+document.addEventListener('DOMContentLoaded', function () {
+  const welcomeScreen = document.getElementById('welcome');
+  const homeScreen = document.getElementById('home');
+  const messageContainer = document.createElement('div'); // Criar o contêiner da mensagem
+
+  // Exibir a mensagem após 3 segundos
+  setTimeout(() => {
+    // Criando a mensagem
+    messageContainer.classList.add('message');
+    messageContainer.innerHTML = "Após os 3 segundos, permanecer na tela inicial";
+
+    // Adicionar a mensagem à tela inicial
+    homeScreen.appendChild(messageContainer);
+
+    // Esconder a tela de boas-vindas e mostrar a tela inicial
+    welcomeScreen.classList.add('hidden');
+    homeScreen.classList.remove('hidden');
+  }, 3000); // A mensagem aparece 3 segundos após o carregamento da página
+});
+
+      
+     
