@@ -45,10 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     welcome.classList.add("hidden");
     home.classList.remove("hidden");
   } else {
-    
-    setTimeout(() => {
-      welcome.classList.add("hidden");
-      home.classList.remove("hidden");
 
       // Marca que o usuário já entrou
       localStorage.setItem("jaEntrou", "true");
