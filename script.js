@@ -54,6 +54,5 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("jaEntrou", "true");
     }, 3000);
   }
-});
-
-
+});  
+     //Após os 3 segundos permanecer na tela inicial
